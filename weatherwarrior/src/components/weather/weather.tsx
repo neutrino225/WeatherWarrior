@@ -7,6 +7,9 @@ type WeatherProps = {
   feelsLike: number;
   rain: number;
   chance: number;
+  humidity: number;
+  uv: number;
+  wind: number;
 };
 
 export const Weather = (props: WeatherProps) => {
@@ -25,6 +28,11 @@ export const Weather = (props: WeatherProps) => {
         </li>
         <li>Precipitation: {props.rain}mm</li>
         <li>Chance of rain: {props.chance}%</li>
+      </WeatherDataList>
+      <WeatherDataList>
+        <li>Humidity: {props.humidity}%</li>
+        <li>UV Index: {props.uv}</li>
+        <li>Wind: {props.wind}km/h</li>
       </WeatherDataList>
     </WeatherWrapper>
   );

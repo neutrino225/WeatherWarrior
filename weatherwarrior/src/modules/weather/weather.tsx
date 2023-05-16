@@ -85,7 +85,7 @@ export const WeatherPage = () => {
   const region = data ? `${data.city.name}, ${data.city.country}` : '[...]';
   const current = data?.list?.[currentWeekday];
   const forecast =
-    data?.list?.map((forecast, i) => ({
+    data?.list?.map((forecast: any, i: any) => ({
       weekday: getWeekday(i),
       icon: getWeatherIcon(forecast.weather?.[0]?.description),
       temperatures: getMinMaxTemps(
@@ -105,6 +105,9 @@ export const WeatherPage = () => {
         feelsLike={Math.round(current?.main?.feels_like || 0)}
         rain={current?.rain?.['3h'] || 0}
         chance={current?.pop || 0}
+        humidity={current?.main?.humidity || 0}
+        uv={current?.uvi || 0}
+        wind={current?.wind?.speed || 0}
       />
       <Forecast forecast={forecast} />
       <ButtonReload onClick={() => updateWeather(setLocation, refetch)} />
