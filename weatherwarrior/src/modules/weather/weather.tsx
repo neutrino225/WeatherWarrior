@@ -14,6 +14,7 @@ import {
   SunIcon,
 } from '../../components/icons';
 import { useForecast } from './weather.store';
+import { User } from '../../pages/login';
 
 type Location = {
   lat: number;
@@ -96,6 +97,8 @@ export const WeatherPage = () => {
       setCurrent: () => setWeekday(i),
     })) || [];
 
+  const user: User = JSON.parse(localStorage.getItem('user') || '{}');
+
   return (
     <>
       <Weather
@@ -108,6 +111,8 @@ export const WeatherPage = () => {
         humidity={current?.main?.humidity || 0}
         uv={current?.uvi || 0}
         wind={current?.wind?.speed || 0}
+        user={user}
+        windDirection={current?.wind?.deg || 0}
       />
       <Forecast forecast={forecast} />
       <ButtonReload onClick={() => updateWeather(setLocation, refetch)} />
